@@ -13,6 +13,11 @@ public class Main
 {
     public static void main( String[] args )
     {
+        //benchmark();
+        treeIterator();
+    }
+
+    public static void benchmark(){
         int repitition = 10000;
         List<Integer> k_random_numbers;
         BinaryTree tree;
@@ -47,11 +52,10 @@ public class Main
 
             System.out.printf("%13d", treeSize);
             System.out.printf("%12d\n", (endTime-startTime)/repitition);
-
         }
     }
 
-    /*
+    public static void treeIterator(){
         BinaryTree tree = new BinaryTree(); 
         tree.add(5,105);
         tree.add(2,102); 
@@ -59,9 +63,10 @@ public class Main
         tree.add(1,101); 
         tree.add(8,108); 
         tree.add(6,106); 
-        tree.add(3,103); 
+        tree.add(3,103);
+        tree.add(4,104); 
         for(int i : tree){
-            System.out.println("nextvalue"+i); 
+            System.out.println("nextvalue "+i); 
         }
-     */
+    }
 }

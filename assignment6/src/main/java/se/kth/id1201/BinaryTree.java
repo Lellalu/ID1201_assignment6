@@ -123,24 +123,34 @@ public class BinaryTree implements Iterable<Integer>{
     }
 
     public class TreeIterator implements Iterator<Integer>{
-        private Node next;
         private Stack <Node> stack;
 
         public TreeIterator(){
-             
+            stack = new Stack<Node>();
+            Node node = root;
+            while(node != null){
+                stack.push(node);
+                node = node.left;
+            }
         }
 
         @Override 
         public boolean hasNext(){ 
-            if(stack != null){
-                return true;
-            }
-            return false;
+            return !stack.empty();
         }
 
         @Override 
         public Integer next(){
-            return stack.pop().key;
+            Node next_node = stack.pop();
+            Node node;
+            if(next_node.right != null){
+                node = next_node.right;
+                while(node != null){
+                    stack.push(node);
+                    node = node.left;
+                }
+            }
+            return next_node.key;
         } 
 
         @Override 
